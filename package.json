@@ -1,0 +1,26 @@
+{
+  "name": "ecom",
+  "version": "1.0.0",
+  "description": "MERN ecommerce site",
+  "main": "server.js",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "bootstrap": "^5.1.3",
+    "express": "^4.18.1",
+    "react-bootstrap": "^2.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node backend/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akhare1004/Ecom.git"
+  },
+  "author": "Animesh Khare",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/akhare1004/Ecom/issues"
+  },
+  "homepage": "https://github.com/akhare1004/Ecom#readme"
+}
