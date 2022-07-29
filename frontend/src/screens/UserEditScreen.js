@@ -9,7 +9,7 @@ import FormContainer from '../components/FormContainer'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
 
 const UserEditScreen = () => {
-    const id = useParams()
+    const { id } = useParams()
     const userId = id
 
     const [ name, setName ] = useState('')
