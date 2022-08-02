@@ -7,7 +7,8 @@ import Message from '../components/Message'
 import Loader from '../components/Loader'
 import { useParams } from 'react-router-dom'
 import Paginate from '../components/Paginate'
-
+import ProductCarousel from '../components/ProductCarousel'
+import { Link } from 'react-router-dom'
 
 const Homescreen = () => {
   const dispatch = useDispatch()
@@ -27,7 +28,8 @@ const Homescreen = () => {
   
   return (
     <div>
-        <h1>Current Products</h1>
+      {!keyword ? <><ProductCarousel /><br/></> : <Link to='/' className='btn btn-dark'>Go Back</Link>}
+        <h1>Available Products</h1>
         {loading ? <Loader /> : error ? <Message variant= 'danger'>{error}</Message>  : 
         (
           <>
