@@ -7,21 +7,25 @@ import Loader from '../components/Loader'
 import { listProducts } from '../actions/productActions'
 import { useNavigate, useParams } from 'react-router-dom'
 import { deleteProduct, createProduct } from '../actions/productActions'
+import Paginate from '../components/Paginate'
 
 const ProductListScreen = () => {
+    let { pageNumber } = useParams()
+    if(!pageNumber){
+        pageNumber=1
+    }
+    
     const dispatch = useDispatch()
     const navigate = useNavigate()
   
     const productList = useSelector(state => state.productList)
-    const { loading, error, products } = productList
+    const { loading, error, products, page, pages } = productList
 
     const productDelete = useSelector(state => state.productDelete)
     const { loading: loadingDelete, error: errorDelete, success: successDelete } = productDelete
     
     const productCreate = useSelector(state => state.productCreate)
     const { loading: loadingCreate, error: errorCreate, success: successCreate, product: createdProduct } = productCreate
-    
-    console.log(createdProduct)
 
     const userLogin = useSelector(state => state.userLogin)
     const { userInfo } = userLogin
@@ -34,14 +38,12 @@ const ProductListScreen = () => {
         if(!userInfo.isAdmin) {
             navigate('/login')
         }
-        console.log(createdProduct)
-        console.log(successCreate)
         if(successCreate) {
             navigate(`/admin/product/${createdProduct._id}/edit`)
         } else {
-            dispatch(listProducts())
+            dispatch(listProducts('', pageNumber))
         }
-    }, [dispatch, navigate, userInfo, successDelete, successCreate, createdProduct])
+    }, [dispatch, navigate, userInfo, successDelete, successCreate, createdProduct, pageNumber])
 
     const deleteHandler = (id) => {
         if(window.confirm('Are you sure?')){
@@ -69,7 +71,7 @@ const ProductListScreen = () => {
         {loadingCreate && <Loader />}
         {errorCreate && <Message variant='danger'>{errorCreate}</Message>}
       {loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
-        <Table striped bordered hover responsive className='table-sm'>
+        <><Table striped bordered hover responsive className='table-sm'>
             <thead>
                 <tr>
                     <th>ID</th>
@@ -102,6 +104,8 @@ const ProductListScreen = () => {
                 ))}
             </tbody>
         </Table>
+        <Paginate pages={pages} page={page} isAdmin={true}></Paginate>
+        </>
       )}
 
     </>
