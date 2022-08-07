@@ -35,8 +35,10 @@ h2 {
   height: 400px;
   padding: 35px;
   margin: 25px;
-  border-bottom-right-radius: 30%;
-  border-top-left-radius: 30%;
+  border-bottom-right-radius: 10%;
+  border-bottom-left-radius: 10%;
+  border-top-right-radius: 10%;
+  border-top-left-radius: 10%;
 }
 
 .carousel {
@@ -49,5 +51,6 @@ h2 {
 
 .card img {
   padding: 4%;
+  max-height: 250px !important;
 }
 

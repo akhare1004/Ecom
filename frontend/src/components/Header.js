@@ -19,7 +19,7 @@ const Header = () => {
       <Navbar bg="primary" variant="dark" expand="lg" collapseOnSelect>
         <Container>
           <Link to='/'>
-            <Navbar.Brand>Nameholder</Navbar.Brand>
+            <Navbar.Brand>Merch of the Ents</Navbar.Brand>
           </Link>
           <SearchBox />
           <Nav className="ml-auto">
